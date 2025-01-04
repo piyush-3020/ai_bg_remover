@@ -12,7 +12,8 @@ const clerkWebhooks = async (req, res) => {
     });
 
     const { data, type } = req.body;
-
+    console.log("hello", req.body);
+    console.log("kuch bhi", { data, type });
     switch (type) {
       case "user.created": {
         const userData = {
@@ -22,6 +23,7 @@ const clerkWebhooks = async (req, res) => {
           lastName: data.last_name,
           photo: data.image_url,
         };
+        console.log("kuch to", userData);
         await userModel.create(userData);
         res.json({});
         break;
